@@ -1,0 +1,44 @@
+#components-form-demo-normal-login .login-form {
+    max-width: 300px;
+  }
+  #components-form-demo-normal-login .login-form-forgot {
+    float: right;
+  }
+  #components-form-demo-normal-login .ant-col-rtl .login-form-forgot {
+    float: left;
+  }
+  #components-form-demo-normal-login .login-form-button {
+    width: 100%;
+  }
+  .login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  
+  }
+  .login-card {
+    width: 400px; /* Réglez la largeur selon vos préférences */
+    box-shadow: 0 2px 0px 600px rgba(8,61,91, 0.9); /* Ajoutez ici votre ombre personnalisée */
+
+  }
+  .header-image-container {
+    margin-top: 26px; /* Ajoutez une marge en bas pour espacer l'image du titre */
+  
+    
+   
+  }
+  .header-image {
+    width: 150px; /* Ajustez la largeur selon vos besoins */
+    height: auto;
+    object-fit: cover;
+  }
+  
+  
+  .login-card-title {
+    text-align: center;
+  }
+  .ant-card .ant-card-body {
+    padding-top: 0px;
+
+}
