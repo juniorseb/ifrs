@@ -26,6 +26,9 @@ const MainLayout = ({ children }) => {
   const handleDashboardClick = () => {
     navigate('/dashboard');
   };
+  const handleNouvContratClick = () => {
+    navigate('/nouveaucontrat');
+  };
 
   return (
     <Layout style={{ height: '100vh' }}>
@@ -51,6 +54,7 @@ const MainLayout = ({ children }) => {
               color: 'white', 
               textAlign: 'center',
               }}
+              onClick={handleNouvContratClick}
             > 
 
             Nouveau contrat

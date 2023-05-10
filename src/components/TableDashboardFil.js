@@ -1,74 +1,52 @@
-import { Space, Table, Tag } from 'antd';
+import { Table } from 'antd';
+
 const columns = [
   {
-    title: 'Name',
-    dataIndex: 'name',
-    key: 'name',
+    title: 'Code',
+    dataIndex: 'code',
+    key: 'code',
     render: (text) => <a>{text}</a>,
   },
   {
-    title: 'Age',
-    dataIndex: 'age',
-    key: 'age',
-  },
-  {
-    title: 'Address',
-    dataIndex: 'address',
-    key: 'address',
-  },
-  {
-    title: 'Tags',
-    key: 'tags',
-    dataIndex: 'tags',
-    render: (_, { tags }) => (
-      <>
-        {tags.map((tag) => {
-          let color = tag.length > 5 ? 'geekblue' : 'green';
-          if (tag === 'loser') {
-            color = 'volcano';
-          }
-          return (
-            <Tag color={color} key={tag}>
-              {tag.toUpperCase()}
-            </Tag>
-          );
-        })}
-      </>
-    ),
-  },
-  {
-    title: 'Action',
-    key: 'action',
-    render: (_, record) => (
-      <Space size="middle">
-        <a>Invite {record.name}</a>
-        <a>Delete</a>
-      </Space>
-    ),
+    title: 'Date',
+    dataIndex: 'date',
+    key: 'date',
   },
 ];
+
 const data = [
   {
     key: '1',
-    name: 'John Brown',
-    age: 32,
-    address: 'New York No. 1 Lake Park',
-    tags: ['nice', 'developer'],
+    code: 'CAC1234',
+    date: '18 Janvier 2023',
   },
   {
     key: '2',
-    name: 'Jim Green',
-    age: 42,
-    address: 'London No. 1 Lake Park',
-    tags: ['loser'],
+    code: 'CAC1234',
+    date: '18 Janvier 2023',
   },
   {
     key: '3',
-    name: 'Joe Black',
-    age: 32,
-    address: 'Sydney No. 1 Lake Park',
-    tags: ['cool', 'teacher'],
+    code: 'CAC1234',
+    date: '18 Janvier 2023',
   },
 ];
-const TableDash = () => <Table columns={columns} dataSource={data} />;
+
+const TableDash = () =>{
+  const rowClassName = (record, index) => {
+    return 'border border-primary';
+  };
+
+  return (
+  <Table
+    
+    className=' rounded border border-primary'
+    rowClassName={rowClassName}
+    columns={columns}
+    dataSource={data}
+    bordered
+  />
+  );
+  };
+
 export default TableDash;

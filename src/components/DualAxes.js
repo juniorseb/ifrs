@@ -64,7 +64,7 @@ const DemoDualAxes = () => {
       },
     ],
   };
-  return <DualAxes {...config} />;
+  return <DualAxes style={{height:"325px"}} {...config} />;
 };
 
 export default DemoDualAxes;
