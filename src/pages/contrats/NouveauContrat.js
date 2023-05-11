@@ -1,19 +1,23 @@
 import { Button, message, Steps, theme } from 'antd';
 
 import { useState } from 'react';
-import Informations_Contrat from '../../components/Info_Contrat';
+import Informations_Contrat from '../../components/Info_Contrat_1';
+import "./NouveauContrat.css"
+import Informations_Contrat_2 from '../../components/Info_Contrat_2';
+import QuestionnaireContrat from '../../components/Questionnaireifrs';
+
 const steps = [
   {
-    title: 'Informations du contrat',
+    title: 'Informations du contrat (1/2)',
     content: <Informations_Contrat />,
   },
   {
-    title: 'Second',
-    content: 'Second-content',
+    title: 'Informations du contrat (2/2)',
+    content: <Informations_Contrat_2 />,
   },
   {
-    title: 'Last',
-    content: 'Last-content',
+    title: 'Questionnaire IFRS 16',
+    content: <QuestionnaireContrat />,
   },
 ];
 
@@ -30,6 +34,7 @@ const Nouveau_Contrat = () => {
       key: item.title,
       title: item.title,
     }));
+
     const contentStyle = {
       lineHeight: '260px',
       textAlign: 'center',
@@ -39,10 +44,15 @@ const Nouveau_Contrat = () => {
       border: `1px dashed ${token.colorBorder}`,
       marginTop: 16,
       padding:5,
+    
     };
+    
     return (
       <>
-      <div  style={{ boxShadow: '0 0.5px 1px 0px rgba(1, 1, 1, 0.1)' }} className=" border border bg-white p-5 rounded">
+      <div style={{ boxShadow: '0 0.5px 1px 0px rgba(1, 1, 1, 0.1)',
+      marginTop: current === 1 ? '100px' : 0,
+      marginBottom: current === 1 ? '8px' : 0
+    }} className=" border border bg-white p-5 ">
             <h3>Nouveau Contrat</h3>
             <br/>
         
