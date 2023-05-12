@@ -1,0 +1,30 @@
+.form-item {
+    position: relative;
+    margin-bottom: 16px;
+  }
+  
+  .form-item label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: all 0.2s ease-out;
+  }
+  
+  .form-item input.focused ~ label,
+  .form-item textarea.focused ~ label,
+  .form-item input.focused,
+  .form-item textarea.focused {
+    color: #1890ff;
+  }
+  
+  .form-item input.focused ~ label,
+  .form-item textarea.focused ~ label {
+    top: -18px;
+    font-size: 12px;
+  }
+  
+  .form-item input.focused,
+  .form-item textarea.focused {
+    border-color: #1890ff;
+  }
+  

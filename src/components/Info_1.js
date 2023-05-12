@@ -46,11 +46,11 @@ const Info_1 = () => {
                 ]}
               >
                 <Input
-                  placeholder="Preneur"
-                  onFocus={onFocus}
-                  onBlur={onBlur}
-                  bordered={focus !== 'preneur'}
-                />
+  placeholder="Preneur"
+  onFocus={onFocus}
+  onBlur={onBlur}
+  className={focus === 'preneur' ? 'focused' : ''}
+/>
               </Form.Item>
             </Col>
             <Col span={12}>
@@ -63,13 +63,13 @@ const Info_1 = () => {
                   },
                 ]}
               >
-                <Input.TextArea
-                  placeholder="Description de la location"
-                  autoSize={{ minRows: 1, maxRows: 6 }}
-                  onFocus={onFocus}
-                  onBlur={onBlur}
-                  bordered={focus !== 'descriptionLocation'}
-                />
+            <Input.TextArea
+  placeholder="Description de la location"
+  autoSize={{ minRows: 1, maxRows: 6 }}
+  onFocus={onFocus}
+  onBlur={onBlur}
+  className={focus === 'descriptionLocation' ? 'focused' : ''}
+/>
               </Form.Item>
             </Col>
           </Row>
@@ -85,12 +85,12 @@ const Info_1 = () => {
                   },
                 ]}
               >
-                <Input
-                  placeholder="Reference contrat"
-                  onFocus={onFocus}
-                  onBlur={onBlur}
-                  bordered={focus !== 'referenceContrat'}
-                />
+               <Input
+  placeholder="Reference contrat"
+  onFocus={onFocus}
+  onBlur={onBlur}
+  className={focus === 'referenceContrat' ? 'focused' : ''}
+/>
               </Form.Item>
             </Col>
             <Col span={12}>
@@ -104,11 +104,11 @@ const Info_1 = () => {
                 ]}
               >
                 <Input
-                  placeholder="Reference du bien"
-                  onFocus={onFocus}
-                  onBlur={onBlur}
-                  bordered={focus !== 'referenceBien'}
-                />
+  placeholder="Reference du bien"
+  onFocus={onFocus}
+  onBlur={onBlur}
+  className={focus === 'referenceBien' ? 'focused' : ''}
+/>
               </Form.Item>
             </Col>
           </Row>
@@ -124,12 +124,12 @@ const Info_1 = () => {
                   },
                 ]}
               >
-                <Input
-                  placeholder="Catégorie d'immobilisations :"
-                  onFocus={onFocus}
-                  onBlur={onBlur}
-                  bordered={focus !== 'categorieImmobiliations'}
-                />
+               <Input
+  placeholder="Catégorie d'immobilisations"
+  onFocus={onFocus}
+  onBlur={onBlur}
+  className={focus === 'categorieImmobiliations' ? 'focused' : ''}
+/>
               </Form.Item>
             </Col>
             <Col span={12}>
@@ -142,14 +142,14 @@ const Info_1 = () => {
                   },
                 ]}
               >
-                <InputNumber
-                  style={{ width: '100%' }}
-                  min={1}
-                  placeholder="Durée standard d'utilité (en mois)"
-                  onFocus={onFocus}
-                  onBlur={onBlur}
-                  bordered={focus !== 'dureeUtilite'}
-                />
+               <InputNumber
+  style={{ width: '100%' }}
+  min={1}
+  placeholder="Durée standard d'utilité (en mois)"
+  onFocus={onFocus}
+  onBlur={onBlur}
+  className={focus === 'dureeUtilite' ? 'focused' : ''}
+/>
               </Form.Item>
             </Col>
           </Row>

@@ -1,4 +1,4 @@
-import { Button, message, Steps, theme } from 'antd';
+import { Button, message, Steps, theme,Divider } from 'antd';
 
 import { useState } from 'react';
 import Informations_Contrat from '../../components/Info_Contrat_1';
@@ -50,14 +50,17 @@ const Nouveau_Contrat = () => {
     return (
       <>
       <div style={{ boxShadow: '0 0.5px 1px 0px rgba(1, 1, 1, 0.1)',
-      marginTop: current === 1 ? '100px' : 0,
-      marginBottom: current === 1 ? '8px' : 0
-    }} className=" border border bg-white p-5 ">
-            <h3>Nouveau Contrat</h3>
-            <br/>
+      marginTop: current === 1 ? '-18px' : 0,
+      marginBottom: current === 1 ? '0px' : 0
+    }} className=" border border bg-white p-5 pt-3 pb-3 ">
+           <Divider orientation="left"><h5>Nouveau contrat</h5></Divider>
+          
+           
         
         <Steps current={current} items={items} />
+      
         <div style={contentStyle}>{steps[current].content}</div>
+        <br/>
         <div
           style={{
             marginTop: 24,

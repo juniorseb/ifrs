@@ -28,7 +28,7 @@ const Info_3 = () =>
         return (
   
             <div className="Info_3">
-                <Divider orientation="right">Loyer</Divider>
+                <Divider orientation="right">Loyer & Suite</Divider>
                 <Form
                     {...layout}
                     name="basic"
@@ -87,6 +87,65 @@ const Info_3 = () =>
                           </Form.Item>
                         </Col>
                       </Row>
+                      <Row gutter={16}>
+                        <Col span={12}>
+                            <Form.Item
+                            name="montantGarantie"
+                            rules={[
+                                {
+                                required: true,
+                                message: 'Montant de garantie est requis',
+                                },
+                            ]}
+                            >
+                            <InputNumber
+                                style={{ width: '100%' }}
+                                placeholder="Montant de garantie"
+                                onFocus={onFocus}
+                                onBlur={onBlur}
+                                bordered={focus !== 'montantGarantie'}
+                                min={0}
+                            />
+                            </Form.Item>
+                        </Col>
+                        <Col span={12}>
+                            <Form.Item
+                            name="typeGarantie"
+                            rules={[
+                                {
+                                required: true,
+                                message: 'Type de garantie est requis',
+                                },
+                            ]}
+                            >
+                            <Select
+                                placeholder="Type de garantie"
+                                onFocus={onFocus}
+                                onBlur={onBlur}
+                                bordered={focus !== 'typeGarantie'}
+                            >
+                                <Option value="cautionBancaire">Caution bancaire</Option>
+                                <Option value="depotGarantie">Dépôt de garantie</Option>
+                                <Option value="autre">Autre</Option>
+                            </Select>
+                            </Form.Item>
+                        </Col>
+                        </Row>
+                        <Row gutter={16}>
+                        <Col span={24}>
+                            <Form.Item
+                            name="commentaires"
+                            >
+                            <TextArea
+                                placeholder="Commentaires"
+                                autoSize={{ minRows: 1, maxRows: 6 }}
+                                onFocus={onFocus}
+                                onBlur={onBlur}
+                                bordered={focus !== 'commentaires'}
+                            />
+                            </Form.Item>
+                        </Col>
+                        </Row>   
 
                     </Form>
                 </div>
