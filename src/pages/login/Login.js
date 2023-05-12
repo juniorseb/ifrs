@@ -46,7 +46,7 @@ const Login = () => {
                   },
                 ]}
               >
-                <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Nom utilisateur" />
+                <Input className='inputLogin' prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Nom utilisateur" />
               </Form.Item>
             </Col>
             <Col span={24}>
@@ -60,6 +60,7 @@ const Login = () => {
                 ]}
               >
                 <Input
+                  className='inputLogin'
                   prefix={<LockOutlined className="site-form-item-icon" />}
                   type="password"
                   placeholder="Mot de passe"

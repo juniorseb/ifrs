@@ -1,3 +1,7 @@
+body{
+  background-color:  rgba(8,61,91, 0.9); /* Ajoutez ici votre ombre personnalisée */
+
+}
 #components-form-demo-normal-login .login-form {
     max-width: 300px;
   }
@@ -19,8 +23,8 @@
   }
   .login-card {
     width: 400px; /* Réglez la largeur selon vos préférences */
-    box-shadow: 0 2px 0px 600px rgba(8,61,91, 0.9); /* Ajoutez ici votre ombre personnalisée */
-
+    box-shadow: 0 2px 500px 10px rgba(8,1,1, 0.2); /* Ajoutez ici votre ombre personnalisée */
+   
   }
   .header-image-container {
     margin-top: 26px; /* Ajoutez une marge en bas pour espacer l'image du titre */
@@ -40,5 +44,11 @@
   }
   .ant-card .ant-card-body {
     padding-top: 0px;
+
+}
+.inputLogin{
+
+  border: 1px solid #827d7ddb;
+ 
 
 }
