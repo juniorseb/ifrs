@@ -1,29 +1,31 @@
 import { Table } from 'antd';
+import "./Table.css"
+
 
 const columns = [
   {
-    title: 'Code',
+    title: <div className="custom-header">Code</div>,
     dataIndex: 'code',
     key: 'code',
-    render: (text) => <a>{text}</a>,
   },
   {
-    title: 'Date',
+    title: <div className="custom-header">Date</div>,
     dataIndex: 'date',
     key: 'date',
+    
   },
 ];
 
 const data = [
   {
     key: '1',
-    code: 'CAC1234',
-    date: '18 Janvier 2023',
+    code: 'ABC1234',
+    date: '12 Janvier 2023',
   },
   {
     key: '2',
-    code: 'CAC1234',
-    date: '18 Janvier 2023',
+    code: 'DEF5678',
+    date: '15 Janvier 2023',
   },
   {
     key: '3',
@@ -32,21 +34,15 @@ const data = [
   },
 ];
 
-const TableDash = () =>{
-  const rowClassName = (record, index) => {
-    return 'border border-primary';
-  };
-
+const TableDash = () => {
   return (
-  <Table
-    
-    className=' rounded border border-primary'
-    rowClassName={rowClassName}
-    columns={columns}
-    dataSource={data}
-    bordered
-  />
+    <Table
+      className=""
+      columns={columns}
+      dataSource={data}
+      
+    />
   );
-  };
+};
 
 export default TableDash;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { MenuUnfoldOutlined, MenuFoldOutlined, FolderOpenOutlined, PieChartOutlined, PlusOutlined } from '@ant-design/icons';
+import { MenuUnfoldOutlined,PartitionOutlined, MenuFoldOutlined, FolderOpenOutlined, PieChartOutlined, PlusOutlined } from '@ant-design/icons';
 import { Button, Layout, Menu, theme } from 'antd';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -32,6 +32,9 @@ const MainLayout = ({ children }) => {
   const handleNouvContratClick = () => {
     navigate('/nouveaucontrat');
   };
+  const handleAdministrationClick = () => {
+    navigate('/administration');
+  };
 
   return (
     <Layout style={{ minHeight: '100vh' }}>
@@ -45,15 +48,16 @@ const MainLayout = ({ children }) => {
           backgroundColor: '#001529', /* Couleur de fond du Sider */}}>
   <div className="logo text-center mt-4">
     <img src={logo} alt="Y3 Logo" className="mb-1" style={{ width: "31%", height: "auto", borderRadius: "10px" }} />
-    <p className="text-white ">
+    <div className="text-white ">
       <h6>Audit et Conseils</h6>
-    </p>
+    </div>
   </div>
   <hr className="text-white" />
   <Menu theme="dark"
           mode="inline"
           selectedKeys={[location.pathname]}
     >
+
     <Menu.Item
       key="0"
       icon={<PlusOutlined />}
@@ -68,13 +72,20 @@ const MainLayout = ({ children }) => {
     >
       Nouveau contrat
     </Menu.Item>
+
     <hr className="text-white" />
+
     <Menu.Item key="/dashboard" icon={<PieChartOutlined />} onClick={handleDashboardClick}>
       Tableau de bord
     </Menu.Item>
+
     <Menu.Item key="/contratheque" icon={<FolderOpenOutlined />} onClick={handleContrathequeClick}>
       Contrathèque
     </Menu.Item>
+
+    <Menu.Item key="/administration" icon={<PartitionOutlined />} onClick={handleAdministrationClick}>
+    Administration
+  </Menu.Item>
   </Menu>
 </Sider>
 

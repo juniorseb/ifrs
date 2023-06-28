@@ -3,7 +3,7 @@ import { Modal, Col, Row, Divider, Steps, Button, Radio } from 'antd';
 
 const { Step } = Steps;
 
-const QuestionnaireContrat = () => {
+const QuestionnaireContrat = ({ updatecontratDataX }) => {
 
   const [visible, setVisible] = useState(false);
   const [currentStep, setCurrentStep] = useState(0);
@@ -36,13 +36,14 @@ const QuestionnaireContrat = () => {
 
   const handleHideModal = () => {
     setVisible(false);
+    updatecontratDataX({'questionnaire': answers})
   };
 
-  const questions = [  {    question: "Question 1",    description: "Y a-t-il un bien déterminé?",    answers: ["Oui", "Non"]
+  const questions = [  {    question: "Question 1",    description: "Y a-t-il un bien déterminé ?",    answers: ["Oui", "Non"]
 },
 {
   question: "Question 2",
-  description: "Le client détient-il le droit d’obtenir la quasi-totalité des avantages économiques découlant de l’utilisation du bien tout au long de la durée d’utilisation?",
+  description: "Le client détient-il le droit d’obtenir la quasi-totalité des avantages économiques découlant de l’utilisation du bien tout au long de la durée d’utilisation ?",
   answers: ["Oui", "Non"]
 },
 {
@@ -52,27 +53,27 @@ const QuestionnaireContrat = () => {
 },
 {
   question: "Question 4",
-  description: "Le client a-t-il le droit d’exploiter le bien tout au long de la durée d’utilisation, sans que le fournisseur puisse changer les consignes d’exploitation?",
+  description: "Le client a-t-il le droit d’exploiter le bien tout au long de la durée d’utilisation, sans que le fournisseur puisse changer les consignes d’exploitation ?",
   answers: ["Oui", "Non"]
 },
 {
   question: "Question 5",
-  description: "Le bien a-t-il été conçu par le client d’une façon qui prédétermine comment le bien sera utilisé et à quelle fin il le sera tout au long de la durée d’utilisation?",
+  description: "Le bien a-t-il été conçu par le client d’une façon qui prédétermine comment le bien sera utilisé et à quelle fin il le sera tout au long de la durée d’utilisation ?",
   answers: ["Oui", "Non"]
 },
 {
   question: "Question 6",
-  description: "Le contrat contient-il un contrat de location?",
+  description: "Le contrat contient-il un contrat de location ?",
   answers: ["Oui", "Non"]
 },
 {
   question: "Question 7",
-  description: "Contrat conclu en cours d'exercice (2022)?",
+  description: "Contrat conclu en cours d'exercice ( de l'année en cours)?",
   answers: ["Oui", "Non"]
 },
 {
   question: "Question 8",
-  description: "Durée résiduelle du contrat en jours au 31/12/2022 pour les contrats conclus en 2022",
+  description: "Durée résiduelle du contrat en jours ( au 31/12 de l'année en cours pour les contrats conclus cette année )",
   answers: ["Moins de 30 jours", "Entre 30 jours et 1 an", "Plus d'un an"]
 },
 {
@@ -82,7 +83,7 @@ const QuestionnaireContrat = () => {
 },
 {
   question: "Question 10",
-  description: "Valeur à l'état neuf du bien sous-jacent inférieur à 5000 usd?",
+  description: "Valeur à l'état neuf du bien sous-jacent inférieur à 5000 usd ?",
   answers: ["Oui", "Non"]
 },
 {
@@ -92,12 +93,12 @@ const QuestionnaireContrat = () => {
 },
 {
   question: "Question 12",
-  description: "Existe-t-il une composante location et une composante services?",
+  description: "Existe-t-il une composante location et une composante services ?",
   answers: ["Oui", "Non"]
 },
 {
   question: "Question 13",
-  description: "Le contrat est-il de courte durée?",
+  description: "Le contrat est-il de courte durée ?",
   answers: ["Oui", "Non"]
 }
 ];

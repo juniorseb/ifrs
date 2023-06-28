@@ -1,26 +1,66 @@
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
-import { Card, Button, Checkbox, Form, Input, Col, Row } from 'antd';
+import { Card, Button, Checkbox, Form, Input, Col, Row, notification } from 'antd';
 import './Login.css';
 import logo from '../../assets/img/y3.jpg';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import Cookies from 'js-cookie';
 
 
 const Login = () => {
-
   const navigate = useNavigate();
 
-  const onFinish = (values) => {
-    console.log('Received values of form: ', values);
-    navigate('/dashboard');
+  const onFinish = async (values) => {
+    try {
+      const response = await axios.post('http://localhost:5000/api/login', values);
+  
+      if (response.status === 200) {
+        const token = response.data.token;
+  
+        // Calculer la date d'expiration du token (4 heures à partir de maintenant)
+        const expirationDate = new Date();
+        
+        expirationDate.setTime(expirationDate.getTime() + 4 * 60 * 60 * 1000); // 4 heures en millisecondes
+
+        // Stocker le token et la date d'expiration dans les cookies
+        Cookies.set('token', token, { expires: expirationDate });
+        Cookies.set('tokenExpiration', expirationDate.toISOString(), { expires: expirationDate });
+
+        // Rediriger vers le dashboard
+        navigate('/dashboard');
+
+      } else {
+        notification.error({
+          message: 'Erreur de connexion',
+          description: 'Une erreur est survenue lors de la connexion.',
+          duration: 3,
+        });
+      }
+    } catch (error) {
+      if (error.response) {
+        notification.error({
+          message: 'Erreur de connexion',
+          description: error.response.data.message || 'Une erreur est survenue lors de la connexion.',
+          duration: 3,
+        });
+      } else {
+        notification.error({
+          message: 'Erreur de connexion',
+          description: 'Une erreur est survenue lors de la connexion.',
+          duration: 3,
+        });
+      }
+    }
   };
+  
+  
 
   return (
     <div className="login-container">
-     <Card
+      <Card
         bordered={true}
         className="login-card border border"
         cover={
-        
           <div className="header-image-container text-center">
             <img alt="example" src={logo} className="header-image" />
           </div>
@@ -42,11 +82,11 @@ const Login = () => {
                 rules={[
                   {
                     required: true,
-                    message: "Veuillez entrer votre nom d'utilisateur !",
+                    message: 'Veuillez entrer votre nom d\'utilisateur !',
                   },
                 ]}
               >
-                <Input className='inputLogin' prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Nom utilisateur" />
+                <Input className="inputLogin" prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Nom utilisateur" />
               </Form.Item>
             </Col>
             <Col span={24}>
@@ -60,7 +100,7 @@ const Login = () => {
                 ]}
               >
                 <Input
-                  className='inputLogin'
+                  className="inputLogin"
                   prefix={<LockOutlined className="site-form-item-icon" />}
                   type="password"
                   placeholder="Mot de passe"
@@ -72,7 +112,6 @@ const Login = () => {
                 <Form.Item name="remember" valuePropName="checked" noStyle>
                   <Checkbox>Se souvenir</Checkbox>
                 </Form.Item>
-             
               </Form.Item>
             </Col>
             <Col span={24}>
@@ -80,7 +119,6 @@ const Login = () => {
                 <Button type="primary" htmlType="submit" className="login-form-button">
                   Se connecter
                 </Button>
-               
               </Form.Item>
             </Col>
           </Row>

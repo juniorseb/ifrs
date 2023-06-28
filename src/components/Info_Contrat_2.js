@@ -6,21 +6,21 @@ import Info_3 from './Info_c_3';
 
 
 
-const Informations_Contrat_2 = () => (
+const Informations_Contrat_2 =  ({ updatecontratDataX }) => (
     <Row gutter={16}>
         
-        <Col span={12} >
+        <Col span={24} >
             <div>
-                <Info_2/>
+                <Info_2 updateContratInfo={updatecontratDataX}/>
             </div>
             
         </Col>
 
      
-        <Col style={{borderLeft:"1.5px solid rgba(1,1,1,0.1)",}} span={12}>
+        <Col  span={24}>
             
         <div>
-                <Info_3/>
+                <Info_3 updateContratInfo={updatecontratDataX}/>
             </div>
          
 

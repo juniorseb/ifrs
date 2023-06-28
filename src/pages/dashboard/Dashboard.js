@@ -4,11 +4,25 @@ import { ArrowDownOutlined,CopyTwoTone,HourglassTwoTone } from '@ant-design/icon
 import { Card, Col, Row, Statistic,  } from 'antd';
 import DemoDualAxes from '../../components/DualAxes';
 import TableDash from '../../components/TableDashboardFil';
+import "./Dashboard.css"
 
 
 
 const Dashboard = () => {
- 
+  const cardHeadStyle = {
+    color: "white",
+     background: "#0ba30acc",
+  };
+  const cardHeadStyleBloc = {
+    
+     background: "#d9ffe59c",
+     borderBottom:"",
+     color:"#0a387b"
+  };
+  const cardHeadStyleStat = {
+    color: "white",
+     background: "#0449af",
+  };
 
   return (
     <div>
@@ -17,9 +31,11 @@ const Dashboard = () => {
     <Card
         title={
           <span>
-            Contrats <CopyTwoTone style={{ marginLeft: '8px', color: '#1890ff', fontSize:"25px" }} />
+            Contrats 
           </span>
+          
         }
+        headStyle={cardHeadStyleBloc}
         className='border border'
         bordered={false}
         style={{ boxShadow: '0 0.5px 1px 0px rgba(1, 1, 1, 0.1)' }}
@@ -36,9 +52,10 @@ const Dashboard = () => {
       <Card 
         title={
           <span>
-            En cours <HourglassTwoTone style={{ marginLeft: '8px', color: '#1890ff', fontSize:"25px" }} />
+            En cours 
           </span>
         }
+        headStyle={cardHeadStyleBloc}
         className='border border' bordered={false} style={{ color: 'green', boxShadow: '0 0.5px 1px 0px rgba(1, 1, 1, 0.1)' }}>
         <Statistic
         
@@ -52,6 +69,7 @@ const Dashboard = () => {
     <Col span={6}>
       <Card 
           title="Taux de contrats non-conformes"
+          headStyle={cardHeadStyleBloc}
         className='border border' bordered={false} style={{ boxShadow: '0 0.5px 1px 0px rgba(1, 1, 1, 0.1)' }}>
         <Statistic
     
@@ -67,6 +85,7 @@ const Dashboard = () => {
     </Col>
     <Col span={6}>
       <Card  
+      headStyle={cardHeadStyleBloc}
       title="Taux de contrats à terme"
       className='border border' bordered={false} style={{ maxHeight:'150px', boxShadow: '0 0.5px 1px 0px rgba(1, 1, 1, 0.1)' }}>
       <Statistic
@@ -88,6 +107,7 @@ const Dashboard = () => {
     <Col span={12}>
       <Card 
        title="Statistiques des contrats"
+       headStyle={cardHeadStyleStat}
       className='border border' bordered={false} style={{ boxShadow: '0 0.5px 1px 0px rgba(1, 1, 1, 0.1)' }}>
         <DemoDualAxes />
       </Card>
@@ -96,14 +116,20 @@ const Dashboard = () => {
     <Col className='rounded' span={12} style={{ maxHeight: '425px', overflow: 'auto' }}>
       
  
-      <Card className='border border' bordered={false} style={{ boxShadow: '0 0.5px 1px 0px rgba(1, 1, 1, 0.1)' }}>
-        <p className='text-primary'><b>Contrats à terme </b></p>
+      <Card 
+      title="Contrats à terme "
+      headStyle={cardHeadStyle}
+      className='border border' bordered={false} style={{ boxShadow: '0 0.5px 1px 0px rgba(1, 1, 1, 0.1)' }}>
+    
         <TableDash />
       </Card>
+
       <br/>
+
       <Card 
       title="Top 3 - Contrats"
-      extra={<a style={{textDecoration:"none"}} href="/contratheque"> {">>"}</a>}
+      headStyle={cardHeadStyle}
+      extra={<a style={{textDecoration:"none", color:"white"}} href="/contratheque"> {">>"}</a>}
       className='border border' bordered={false} style={{ boxShadow: '0 0.5px 1px 0px rgba(1, 1, 1, 0.1)' }}>
     
         <TableDash />
