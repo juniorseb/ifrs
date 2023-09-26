@@ -118,8 +118,8 @@ const removeCodification = async (codificationId) => {
       if (selectedCodification) {
         const updatedCodification = {
           id: selectedCodification.id,
-          Compte: values.Compte,
-          Libelle: values.Libelle,
+          compte: values.compte,
+          libelle: values.libelle,
         };
         const isSuccess = await updateCodificationData(updatedCodification);
         
@@ -191,13 +191,13 @@ const removeCodification = async (codificationId) => {
     const codificationColumns = [
       {
         title: 'Code compte',
-        dataIndex: 'Compte',
-        key: 'Compte',
+        dataIndex: 'compte',
+        key: 'compte',
       },
       {
         title: 'Libellé',
-        dataIndex: 'Libelle',
-        key: 'Libelle',
+        dataIndex: 'libelle',
+        key: 'libelle',
       },
       {
         title: 'Action',
@@ -270,7 +270,7 @@ const removeCodification = async (codificationId) => {
                 <Col span={12}>
                     <Form.Item
                     label="Code compte"
-                    name="Compte"
+                    name="compte"
                     labelCol={{ span: 24 }}
                     wrapperCol={{ span: 24 }}
                     rules={[{ required: true, message: 'Veuillez saisir le compte' }]}
@@ -282,7 +282,7 @@ const removeCodification = async (codificationId) => {
                 <Col span={12}>
                     <Form.Item
                     label="Libellé"
-                    name="Libelle"
+                    name="libelle"
                     labelCol={{ span: 24 }}
                     wrapperCol={{ span: 24 }}
                     rules={[{ required: true, message: 'Veuillez saisir le libellé' }]}

@@ -23,17 +23,20 @@ const MainLayout = ({ children }) => {
     setCollapsed(!collapsed);
   };
 
+  const handleClasseurClick = () => {
+    navigate('/classeur/');
+  };
   const handleContrathequeClick = () => {
-    navigate('/contratheque');
+    navigate('/contratheque/');
   };
   const handleDashboardClick = () => {
-    navigate('/dashboard');
+    navigate('/dashboard/');
   };
   const handleNouvContratClick = () => {
-    navigate('/nouveaucontrat');
+    navigate('/nouveaucontrat/');
   };
   const handleAdministrationClick = () => {
-    navigate('/administration');
+    navigate('/administration/');
   };
 
   return (
@@ -75,15 +78,15 @@ const MainLayout = ({ children }) => {
 
     <hr className="text-white" />
 
-    <Menu.Item key="/dashboard" icon={<PieChartOutlined />} onClick={handleDashboardClick}>
+    <Menu.Item key="/dashboard/" icon={<PieChartOutlined />} onClick={handleDashboardClick}>
       Tableau de bord
     </Menu.Item>
 
-    <Menu.Item key="/contratheque" icon={<FolderOpenOutlined />} onClick={handleContrathequeClick}>
+    <Menu.Item key="/contratheque/" icon={<FolderOpenOutlined />} onClick={handleContrathequeClick}>
       Contrathèque
     </Menu.Item>
 
-    <Menu.Item key="/administration" icon={<PartitionOutlined />} onClick={handleAdministrationClick}>
+    <Menu.Item key="/administration/" icon={<PartitionOutlined />} onClick={handleAdministrationClick}>
     Administration
   </Menu.Item>
   </Menu>
@@ -99,10 +102,19 @@ const MainLayout = ({ children }) => {
     padding: 0,
     background: colorBgContainer,
     borderBottom: '1px solid #f0f0f0',
-    width: '100%',
+ 
     transition: 'left 0.1s ease-in-out',
   }}
 >
+<Button
+          type="primary"
+          onClick={handleClasseurClick}
+          style={{float:'right', margin:15,}}
+     
+        >
+          <FolderOpenOutlined />
+          Mes dossiers
+        </Button>
 <Button
   type="text"
   icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
@@ -117,6 +129,7 @@ const MainLayout = ({ children }) => {
     backgroundColor: "transparent" /* Ajout de la propriété pour enlever le hover background */
   }}
 />
+
 </Header>
 
 

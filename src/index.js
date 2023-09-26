@@ -4,12 +4,14 @@ import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate } from 'r
 import MainLayout from './components/Layout';
 import { Spin } from 'antd';
 import ProtectedRoute from './components/ProtectedRout';
+import Layout_Classeur from './components/Layout_classeur';
 
 const Login = lazy(() => import('./pages/login/Login'));
 const Dashboard = lazy(() => import('./pages/dashboard/Dashboard'));
 const Contratheque = lazy(() => import('./pages/contratheque/Contrathek'));
 const NouveauContrat = lazy(() => import('./pages/contrats/NouveauContrat'));
 const Administration = lazy(() => import('./pages/administration/Administration'));
+const Classeur = lazy(() => import('./pages/classeur/Classeur'));
 
 
 
@@ -21,7 +23,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<ProtectedRoute component={Login} />} />
             <Route
-              path="/dashboard"
+              path="/dashboard/"
               element={
                 <MainLayout>
                   <Routes>
@@ -31,7 +33,7 @@ const App = () => {
               }
             />
             <Route
-              path="/contratheque"
+              path="/contratheque/"
               element={
                 <MainLayout>
                   <Routes>
@@ -41,7 +43,7 @@ const App = () => {
               }
             />
             <Route
-              path="/nouveaucontrat"
+              path="/nouveaucontrat/"
               element={
                 <MainLayout>
                   <Routes>
@@ -51,13 +53,23 @@ const App = () => {
               }
             />
             <Route
-              path="/administration"
+              path="/administration/"
               element={
                 <MainLayout>
                   <Routes>
                     <Route path="/" element={<ProtectedRoute component={Administration} />} />
                   </Routes>
                 </MainLayout>
+              }
+            />
+            <Route
+              path="/classeur/"
+              element={
+                <Layout_Classeur>
+                  <Routes>
+                    <Route path="/" element={<ProtectedRoute component={Classeur} />} />
+                  </Routes>
+                </Layout_Classeur>
               }
             />
           </Routes>

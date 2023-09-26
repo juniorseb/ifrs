@@ -12,7 +12,7 @@ const layout = {
   },
 };
 
-const Info_3 = ({ updateContratInfo }) => {
+const Info_3 = ({ updateContratInfo,formValues }) => {
   const [focus, setFocus] = useState('');
   const [formData, setFormData] = useState({});
 
@@ -48,16 +48,17 @@ const Info_3 = ({ updateContratInfo }) => {
         name="basic"
         initialValues={{
           remember: true,
+          ...formValues?.info_3
         }}
         onFinish={() => {}}
         onFinishFailed={() => {}}
         onFieldsChange={handleFormChange}
       >
         <Row gutter={16}>
-          <Col span={8}>
+          <Col span={6}>
             <Form.Item
               className="custom-input-number"
-              label="Montant du loyer mensuel "
+              label="Loyer mensuel "
               name="loyerMensuel"
               rules={[
                 {
@@ -69,10 +70,10 @@ const Info_3 = ({ updateContratInfo }) => {
               <InputNumber className="inputLogin" style={{ width: '100%' }} />
             </Form.Item>
           </Col>
-          <Col span={8}>
+          <Col span={6}>
             <Form.Item
               className="custom-input-number"
-              label="Montant de l'avance "
+              label="Avance "
               name="avance"
               rules={[
                 {
@@ -84,35 +85,10 @@ const Info_3 = ({ updateContratInfo }) => {
               <InputNumber className="inputLogin" style={{ width: '100%' }} />
             </Form.Item>
           </Col>
-          <Col span={8}>
+          <Col span={6}>
             <Form.Item
               className="custom-input-number"
-              label="Montant de la franchise de loyer "
-              name="franchiseLoyer"
-              rules={[
-                {
-                  required: false,
-                  message: 'Montant de la franchise de loyer est requis',
-                },
-              ]}
-            >
-              <InputNumber className="inputLogin" style={{ width: '100%' }} />
-            </Form.Item>
-          </Col>
-          <Col span={8}>
-            <Form.Item
-              className="custom-input-number"
-              label="Option"
-              name="option"
-            >
-              <InputNumber className="inputLogin" style={{ width: '100%' }} />
-            </Form.Item>
-          </Col>
-       
-          <Col span={8}>
-            <Form.Item
-              className="custom-input-number"
-              label="Montant de la caution "
+              label="Caution "
               name="caution"
               rules={[
                 {
@@ -124,10 +100,10 @@ const Info_3 = ({ updateContratInfo }) => {
               <InputNumber className="inputLogin" style={{ width: '100%' }} />
             </Form.Item>
           </Col>
-          <Col span={8}>
+         {/*  <Col span={6}>
             <Form.Item
               className="custom-input-number"
-              label="Montant des frais d'enregistrement et de dossiers "
+              label="Frais d'enregistrement et de dossiers "
               name="fraisEnregistrement"
               rules={[
                 {
@@ -139,32 +115,60 @@ const Info_3 = ({ updateContratInfo }) => {
             >
               <InputNumber className="inputLogin" style={{ width: '100%' }} />
             </Form.Item>
-          </Col>
-        </Row>
-        <Row gutter={16}>
-          <Col span={8}>
+          </Col>*/}
+       
+          <Col span={6}>
             <Form.Item
               className="custom-input-number"
-              label="Taux d'interet (facultatif)"
+              label="Taux d'interêt"
               name="tauxInteret"
             >
               <InputNumber className="inputLogin" style={{ width: '100%' }} />
             </Form.Item>
           </Col>
-          <Col span={8}>
+          {/* <Col span={6}> 
             <Form.Item
               className="custom-input-number"
-              label="Montant du prix de vente"
-              name="prixVente"
+              label="Franchise de loyer "
+              name="franchiseLoyer"
+              rules={[
+                {
+                  required: false,
+                  message: 'Montant de la franchise de loyer est requis',
+                },
+              ]}
             >
               <InputNumber className="inputLogin" style={{ width: '100%' }} />
             </Form.Item>
           </Col>
-    
-          <Col span={8}>
+          <Col span={6}>
             <Form.Item
               className="custom-input-number"
-              label="Montant de garantie "
+              label="Option"
+              name="option"
+            >
+              <InputNumber className="inputLogin" style={{ width: '100%' }} />
+            </Form.Item>
+          </Col>*/}
+          </Row>
+        <Row gutter={16}>
+ 
+  
+       {/*    <Col span={6}>
+            <Form.Item
+              className="custom-input-number"
+              label="Prix de vente"
+              name="prixVente"
+            >
+              <InputNumber className="inputLogin" style={{ width: '100%' }} />
+            </Form.Item>
+          </Col>*/}
+          </Row>
+      {/*    <Row gutter={16}>
+          <Col span={6}>
+            <Form.Item
+              className="custom-input-number"
+              label="Garantie "
               name="montantGarantie"
               rules={[
                 {
@@ -183,7 +187,7 @@ const Info_3 = ({ updateContratInfo }) => {
               />
             </Form.Item>
           </Col>
-          <Col span={8}>
+          <Col span={6}>
             <Form.Item
               className="custom-select"
               label="Type de garantie "
@@ -209,7 +213,7 @@ const Info_3 = ({ updateContratInfo }) => {
             </Form.Item>
           </Col>
      
-          <Col span={8}>
+          <Col span={6}>
             <Form.Item
               className="custom-input"
               label="Commentaires"
@@ -225,7 +229,7 @@ const Info_3 = ({ updateContratInfo }) => {
               />
             </Form.Item>
           </Col>
-        </Row>
+        </Row>*/}
       </Form>
     </div>
   );

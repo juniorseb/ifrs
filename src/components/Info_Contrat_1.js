@@ -5,7 +5,7 @@ import { InboxOutlined } from '@ant-design/icons';
 
 const { Dragger } = Upload;
 
-const Informations_Contrat = ({ updatecontratDataX }) => {
+const Informations_Contrat = ({ updatecontratDataX,formValues }) => {
   const [fileList, setFileList] = useState([]);
   const [contractData, setContractDataFileList] = useState({});
   const [uploadedFile, setUploadedFile] = useState(null);
@@ -56,18 +56,14 @@ const Informations_Contrat = ({ updatecontratDataX }) => {
     setContractDataFileList(data);
   }, [uploadedFile]);
 
-  const handleFinishWorkflow = () => {
-    // Utilisez les données du contrat (y compris le fichier uploadé) ici
-    console.log(contractData);
-  };
 
   return (
     <Row gutter={16}>
       <Col span={11}>
-        <Dragger
-          style={{ borderColor: '#1677ff' }}
+      <Dragger
+          style={{ borderColor: '#1677ff'}}
           multiple={false}
-          fileList={fileList}
+          fileList={formValues?.fichier ? [formValues.fichier] : []}
           beforeUpload={(file) => {
             handleFileUpload(file);
             return false; // Empêche l'envoi automatique du fichier
@@ -84,7 +80,7 @@ const Informations_Contrat = ({ updatecontratDataX }) => {
 
       <Col style={{ borderLeft: '1.5px solid rgba(1,1,1,0.1)' }} span={12}>
         <div>
-          <Info_1 updateContratInfo={updatecontratDataX} />
+          <Info_1 formValues={formValues} updateContratInfo={updatecontratDataX} />
         </div>
       </Col>
     </Row>

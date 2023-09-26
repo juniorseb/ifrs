@@ -1,58 +1,58 @@
 import React, { useState, useEffect } from 'react';
 import { DualAxes } from '@ant-design/plots';
 
-const DemoDualAxes = () => {
+const DemoDualAxes = ({data1}) => {
   const data = [
     {
-      year: '1991',
-      value: 3,
-      count: 10,
+      jour: '1991',
+      Eligible: 3,
+      Exemption: 10,
     },
     {
-      year: '1992',
-      value: 4,
-      count: 4,
+      jour: '1992',
+      Eligible: 4,
+      Exemption: 4,
     },
     {
-      year: '1993',
-      value: 3.5,
-      count: 5,
+      jour: '1993',
+      Eligible: 3.5,
+      Exemption: 5,
     },
     {
-      year: '1994',
-      value: 5,
-      count: 5,
+      jour: '1994',
+      Eligible: 5,
+      Exemption: 5,
     },
     {
-      year: '1995',
-      value: 4.9,
-      count: 4.9,
+      jour: '1995',
+      Eligible: 4.9,
+      Exemption: 4.9,
     },
     {
-      year: '1996',
-      value: 6,
-      count: 35,
+      jour: '1996',
+      Eligible: 6,
+      Exemption: 35,
     },
     {
-      year: '1997',
-      value: 7,
-      count: 7,
+      jour: '1997',
+      Eligible: 7,
+      Exemption: 7,
     },
     {
-      year: '1998',
-      value: 9,
-      count: 1,
+      jour: '1998',
+      Eligible: 9,
+      Exemption: 1,
     },
     {
-      year: '1999',
-      value: 13,
-      count: 20,
+      jour: '1999',
+      Eligible: 13,
+      Exemption: 20,
     },
   ];
   const config = {
     data: [data, data],
-    xField: 'year',
-    yField: ['value', 'count'],
+    xField: 'jour',
+    yField: ['Eligible', 'Exemption'],
     geometryOptions: [
       {
         geometry: 'line',

@@ -23,7 +23,7 @@ const ProtectedRoute = ({ component: Component, ...rest }) => {
       if (isTokenExpired) {
         navigate('/'); // Redirect to the login page if the token is expired
       } else if (window.location.pathname === '/' && !isTokenExpired) {
-        navigate('/dashboard'); // Redirect to the dashboard if the route is '/' and the token is valid
+        navigate('/classeur/'); // Redirect to the dashboard if the route is '/' and the token is valid
       }
     }
   }, [navigate, token]);

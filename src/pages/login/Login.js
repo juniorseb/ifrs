@@ -27,7 +27,7 @@ const Login = () => {
         Cookies.set('tokenExpiration', expirationDate.toISOString(), { expires: expirationDate });
 
         // Rediriger vers le dashboard
-        navigate('/dashboard');
+        navigate('/classeur/');
 
       } else {
         notification.error({

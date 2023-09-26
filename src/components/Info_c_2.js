@@ -12,7 +12,7 @@ const layout = {
   },
 };
 
-const Info_2 = ({ updateContratInfo }) => {
+const Info_2 = ({ updateContratInfo,formValues }) => {
   const [focus, setFocus] = useState('');
   const [formData, setFormData] = useState({});
 
@@ -47,13 +47,14 @@ const Info_2 = ({ updateContratInfo }) => {
         name="basic"
         initialValues={{
           remember: true,
+          ...formValues?.info_2
         }}
         onFinish={() => {}}
         onFinishFailed={() => {}}
         onFieldsChange={handleFormChange}
       >
         <Row gutter={16} >
-          <Col span={4}>
+          <Col span={6}>
 
           <Form.Item
                 className="custom-input"
@@ -86,26 +87,11 @@ const Info_2 = ({ updateContratInfo }) => {
             </Form.Item>
 
           </Col>
-          <Col span={4}>
-            <Form.Item className="custom-input" label="Bailleur" name="bailleur" rules={[
-              {
-                required: true,
-                message: 'Bailleur est requis',
-              },
-            ]}>
-              <Input
-                onFocus={onFocus}
-                onBlur={onBlur}
-                bordered={focus !== 'bailleur'}
-                className="inputLogin"
-                 
-              />
-            </Form.Item>
-          </Col>
+    
         
 
         
-          <Col span={4}>
+          {/* <Col span={6}> 
             <Form.Item className="custom-input" label="Concessionnaire" name="concessionnaire" rules={[
               {
                 required: false,
@@ -121,9 +107,9 @@ const Info_2 = ({ updateContratInfo }) => {
                  
               />
             </Form.Item>
-          </Col>
+          </Col>*/}
         
-          <Col span={4}>
+          {/*<Col span={6}>
             <Form.Item className="custom-datepicker" label="Signature du contrat" name="dateSignatureContrat" rules={[
               {
                 required: false,
@@ -141,11 +127,11 @@ const Info_2 = ({ updateContratInfo }) => {
                  
               />
             </Form.Item>
-          </Col>
+          </Col>*/}
       
 
       
-          <Col span={4}>
+          <Col span={6}>
             <Form.Item className="custom-datepicker" label="Début de l'échéance" name="dateDebutEcheance" rules={[
               {
                 required: true,
@@ -162,8 +148,8 @@ const Info_2 = ({ updateContratInfo }) => {
               />
             </Form.Item>
           </Col>
-          <Col span={4}>
-            <Form.Item className="custom-datepicker" label="Date de fin de l'échéance" name="dateFinEcheance" rules={[
+          <Col span={6}>
+            <Form.Item className="custom-datepicker" label="Fin de l'échéance" name="dateFinEcheance" rules={[
               {
                 required: true,
                 message: 'Date de fin de l\'échéance est requise',
@@ -179,28 +165,7 @@ const Info_2 = ({ updateContratInfo }) => {
               />
             </Form.Item>
           </Col>
-        </Row>
-
-        <Row gutter={16}>
-          <Col span={4}>
-            <Form.Item className="custom-input-number" label="Durée du contrat (mois)" name="dureeContratMois" rules={[
-              {
-                required: true,
-                message: 'Durée du contrat est requise',
-              },
-            ]}>
-              <InputNumber
-                 style={{ width: '100%', borderRadius:'5px' }}
-                onFocus={onFocus}
-                onBlur={onBlur}
-                bordered={focus !== 'dureeContratMois'}
-                min={1}
-                className="inputLogin"
-                 
-              />
-            </Form.Item>
-          </Col>
-          <Col span={4}>
+          <Col span={6}>
             <Form.Item className="custom-select" label="Période de paiement" name="paiementDebutFin" rules={[
               {
                 required: true,
@@ -220,10 +185,32 @@ const Info_2 = ({ updateContratInfo }) => {
               </Select>
             </Form.Item>
           </Col>
+        </Row>
+
+        <Row gutter={16}>
+      {/* <Col span={6}>
+            <Form.Item className="custom-input-number" label="Durée du contrat (mois)" name="dureeContratMois" rules={[
+              {
+                required: true,
+                message: 'Durée du contrat est requise',
+              },
+            ]}>
+              <InputNumber
+                 style={{ width: '100%', borderRadius:'5px' }}
+                onFocus={onFocus}
+                onBlur={onBlur}
+                bordered={focus !== 'dureeContratMois'}
+                min={1}
+                className="inputLogin"
+                 
+              />
+            </Form.Item>
+          </Col> */} 
+  
       
 
         
-          <Col span={4}>
+          <Col span={6}>
             <Form.Item className="custom-select" label="Périodicité" name="periodicite" rules={[
               {
                 required: true,
@@ -245,7 +232,7 @@ const Info_2 = ({ updateContratInfo }) => {
           </Col>
 
        
-          <Col span={4}>
+          <Col span={6}>
             <Form.Item className="custom-input-number" label="Taux de révision" name="tauxRevision" rules={[
               {
                 required: false,
@@ -264,7 +251,7 @@ const Info_2 = ({ updateContratInfo }) => {
             </Form.Item>
           </Col>
       
-          <Col span={4}>
+          <Col span={6}>
             <Form.Item className="custom-select" label="Tacite reconduction" name="taciteReconduction" rules={[
               {
                 required: true,
@@ -282,7 +269,7 @@ const Info_2 = ({ updateContratInfo }) => {
               </Select>
             </Form.Item>
           </Col>
-          <Col span={4}>
+          <Col span={6}>
             <Form.Item className="custom-datepicker" label="Echéance tacite" name="echeanceTaciteReconduction" rules={[
               {
                 required: false,

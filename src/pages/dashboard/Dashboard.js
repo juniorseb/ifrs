@@ -1,29 +1,61 @@
 
-import React from 'react';
-import { ArrowDownOutlined,CopyTwoTone,HourglassTwoTone } from '@ant-design/icons';
+import React, { useState, useEffect, } from 'react';
+import { ArrowUpOutlined,CopyTwoTone,HourglassTwoTone } from '@ant-design/icons';
 import { Card, Col, Row, Statistic,  } from 'antd';
 import DemoDualAxes from '../../components/DualAxes';
 import TableDash from '../../components/TableDashboardFil';
 import "./Dashboard.css"
+import { Pie } from '@ant-design/plots';
 
 
 
 const Dashboard = () => {
+
+  const [data, setData] = useState([]);
+  const [dataEligibles, setDataEligibles] = useState([]);
+  const [dataExempt, setDataExempt] = useState([]);
+
+
   const cardHeadStyle = {
     color: "white",
      background: "#0ba30acc",
   };
   const cardHeadStyleBloc = {
     
-     background: "#d9ffe59c",
+
      borderBottom:"",
-     color:"#0a387b"
+  
   };
   const cardHeadStyleStat = {
     color: "white",
      background: "#0449af",
   };
 
+  
+  const fetchInitialData = async () => {
+    try {
+      const response = await fetch('http://127.0.0.1:5000/api/contrats');
+      if (response.ok) {
+        const initialData = await response.json();
+        const eligibleContrats = initialData.filter((contrat) => contrat.statut_contrat === 'éligible');
+        const exemptionContrats = initialData.filter((contrat) => contrat.statut_contrat_exempt === 'exempté');
+        setDataExempt(exemptionContrats)
+        setData(initialData);
+        setDataEligibles(eligibleContrats)
+        console.log('Initial data fetched successfully');
+      } else {
+        console.log('Failed to fetch initial data');
+      }
+    } catch (error) {
+      console.error('Error occurred while fetching initial data', error);
+    }
+  };
+  useEffect(() => {
+    fetchInitialData();
+  }, [data]);
+
+
+  
   return (
     <div>
     <Row gutter={16}>
@@ -41,7 +73,7 @@ const Dashboard = () => {
         style={{ boxShadow: '0 0.5px 1px 0px rgba(1, 1, 1, 0.1)' }}
       >
         <Statistic
-          value={7}
+          value={data.length}
           precision={0}
           valueStyle={{ color: '#3f8600' }}
         />
@@ -52,7 +84,7 @@ const Dashboard = () => {
       <Card 
         title={
           <span>
-            En cours 
+            Contrats éligbles
           </span>
         }
         headStyle={cardHeadStyleBloc}
@@ -60,7 +92,7 @@ const Dashboard = () => {
         <Statistic
         
           titleStyle={{ color: 'green' }}
-          value={3}
+          value={dataEligibles.length}
           precision={0}
           valueStyle={{ color: '#3f8600' }}
         />
@@ -68,17 +100,17 @@ const Dashboard = () => {
     </Col>
     <Col span={6}>
       <Card 
-          title="Taux de contrats non-conformes"
+          title="Taux d'éligibilité"
           headStyle={cardHeadStyleBloc}
         className='border border' bordered={false} style={{ boxShadow: '0 0.5px 1px 0px rgba(1, 1, 1, 0.1)' }}>
         <Statistic
     
-          value={2}
+          value={((dataEligibles.length/data.length)*100)}
           precision={0}
           valueStyle={{
-            color: '#cf1322',
+            color: 'green',
           }}
-          prefix={<ArrowDownOutlined />}
+          prefix={<ArrowUpOutlined />}
           suffix="%"
         />
       </Card>
@@ -86,11 +118,11 @@ const Dashboard = () => {
     <Col span={6}>
       <Card  
       headStyle={cardHeadStyleBloc}
-      title="Taux de contrats à terme"
+      title="Taux d'exemption"
       className='border border' bordered={false} style={{ maxHeight:'150px', boxShadow: '0 0.5px 1px 0px rgba(1, 1, 1, 0.1)' }}>
       <Statistic
         
-          value={30}
+          value={((dataExempt.length/data.length)*100)}
           precision={0}
           valueStyle={{
             color: '#cf1322',
@@ -112,6 +144,7 @@ const Dashboard = () => {
         <DemoDualAxes />
       </Card>
     </Col>
+    
 
     <Col className='rounded' span={12} style={{ maxHeight: '425px', overflow: 'auto' }}>
       

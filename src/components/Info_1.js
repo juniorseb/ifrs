@@ -11,7 +11,7 @@ const layout = {
   },
 };
 
-const Info_1 = ({ updateContratInfo }) => {
+const Info_1 = ({ updateContratInfo,formValues }) => {
   const [preneurs, setPreneurs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [immobilisations, setImmobilisations] = useState([]);
@@ -46,9 +46,10 @@ const Info_1 = ({ updateContratInfo }) => {
     }
   };
 
-
+ 
 
   useEffect(() => {
+    console.log(formValues)
     fetch('http://127.0.0.1:5000/api/codifications')
       .then(response => response.json())
       .then(data => setImmobilisations(data));
@@ -58,18 +59,19 @@ const Info_1 = ({ updateContratInfo }) => {
 
   const handleFormChange = (changedValues, allValues) => {
     setFormData(allValues);
-   
+  
     const formData = allValues.reduce((acc, field) => {
       const fieldName = field.name[0];
       const fieldValue = field.value;
       acc[fieldName] = fieldValue;
       return acc;
     }, {});
-
-
-    updateContratInfo({'info_1':formData})
+  
+    updateContratInfo({ info_1: formData });
 
   };
+ 
+  
   
 
 
@@ -82,10 +84,12 @@ const Info_1 = ({ updateContratInfo }) => {
         name="basic"
         initialValues={{
           remember: true,
+          ...formValues?.info_1,
         }}
         onFinish={() => {}}
         onFinishFailed={() => {}}
         onFieldsChange={handleFormChange}
+  
         
        
       >
@@ -115,8 +119,22 @@ const Info_1 = ({ updateContratInfo }) => {
               </Select>
             </Form.Item>
           </Col>
-
           <Col span={12}>
+            <Form.Item className="custom-input" label="Bailleur" name="bailleur" rules={[
+              {
+                required: true,
+                message: 'Bailleur est requis',
+              },
+            ]}>
+              <Input
+            
+              
+                className="inputLogin"
+                 
+              />
+            </Form.Item>
+          </Col>
+          <Col span={12}> 
             <Form.Item
               className="custom-input"
               label="Description de la location"
@@ -137,52 +155,6 @@ const Info_1 = ({ updateContratInfo }) => {
               />
             </Form.Item>
           </Col>
-        </Row>
-
-        <Row gutter={16}>
-          <Col span={12}>
-            <Form.Item
-              className="custom-input"
-              label="Reference contrat"
-              name="referenceContrat"
-              rules={[
-                {
-                  required: true,
-                  message: 'Reference contrat est requise',
-                },
-              ]}
-            >
-              <Input
-                style={{ width: '100%', borderRadius: '5px' }}
-                onFocus={onFocus}
-                onBlur={onBlur}
-                className="inputLogin"
-              />
-            </Form.Item>
-          </Col>
-          <Col span={12}>
-            <Form.Item
-              className="custom-input"
-              label="Reference du bien"
-              name="referenceBien"
-              rules={[
-                {
-                  required: true,
-                  message: 'Reference du bien est requise',
-                },
-              ]}
-            >
-              <Input
-                style={{ width: '100%', borderRadius: '5px' }}
-                onFocus={onFocus}
-                onBlur={onBlur}
-                className="inputLogin"
-              />
-            </Form.Item>
-          </Col>
-        </Row>
-
-        <Row gutter={16}>
           <Col span={12}>
             <Form.Item
               className="custom-input"
@@ -203,13 +175,60 @@ const Info_1 = ({ updateContratInfo }) => {
               >
                 {immobilisations.map(option => (
                   <Option key={option.id} value={option.id}>
-                    {option.Libelle}
+                    {option.libelle}
                   </Option>
                 ))}
               </Select>
             </Form.Item>
           </Col>
-          <Col span={12}>
+        </Row>
+
+        <Row gutter={16}>
+       {/*   <Col span={12}>
+            <Form.Item
+              className="custom-input"
+              label="Reference contrat"
+              name="referenceContrat"
+              rules={[
+                {
+                  required: true,
+                  message: 'Reference contrat est requise',
+                },
+              ]}
+            >
+              <Input
+                style={{ width: '100%', borderRadius: '5px' }}
+                onFocus={onFocus}
+                onBlur={onBlur}
+                className="inputLogin"
+              />
+            </Form.Item>
+            </Col> */}
+       {/*   <Col span={12}>
+            <Form.Item
+              className="custom-input"
+              label="Reference du bien"
+              name="referenceBien"
+              rules={[
+                {
+                  required: true,
+                  message: 'Reference du bien est requise',
+                },
+              ]}
+            >
+              <Input
+                style={{ width: '100%', borderRadius: '5px' }}
+                onFocus={onFocus}
+                onBlur={onBlur}
+                className="inputLogin"
+              />
+            </Form.Item>
+          </Col>*/}
+        </Row>
+
+        <Row gutter={16}>
+      
+          {/* <Col span={12}>
             <Form.Item
               className="custom-input-number"
               label="Durée standard d'utilité (en mois)"
@@ -229,7 +248,7 @@ const Info_1 = ({ updateContratInfo }) => {
                 className="inputLogin"
               />
             </Form.Item>
-          </Col>
+            </Col> */}
         </Row>
       </Form>
     </div>
